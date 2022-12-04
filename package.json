@@ -1,9 +1,8 @@
 {
   "name": "frontend-project-46",
-  "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/runabal/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/runabal/frontend-project-46/actions)",
-  "main": "lodash.js",
+  "main": "src/index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
@@ -19,9 +18,18 @@
   "bugs": {
     "url": "https://github.com/runabal/frontend-project-46/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/runabal/frontend-project-46#readme",
   "dependencies": {
     "commander": "^9.4.1",
+    "eslint-plugin-jest": "^27.1.6",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.0"
   }
 }
