@@ -2,11 +2,11 @@
 [![Actions Status](https://github.com/runabal/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/runabal/frontend-project-46/actions)
 
 ```
-###Requirements
+### Requirements
 ```
 Node.js (version 13.2.0 and above)
 ```
-###Install
+### Install:
 
 # install dependencies
 make install
