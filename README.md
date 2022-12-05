@@ -1,5 +1,7 @@
 ### Hexlet tests and linter status:
-<<<<<<< HEAD
+[![Maintainability](https://api.codeclimate.com/v1/badges/ba8376bf451401f7ec34/maintainability)](https://codeclimate.com/github/runabal/frontend-project-lvl1/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/ba8376bf451401f7ec34/test_coverage)](https://codeclimate.com/github/runabal/frontend-project-lvl1/test_coverage)
+
 
 [![Actions Status](https://github.com/runabal/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/runabal/frontend-project-46/actions)
 =======
