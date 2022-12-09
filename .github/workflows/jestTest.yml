@@ -1,7 +1,7 @@
-# Name of workflow
+#Name of workflow
 name: 'project test'
 
-# Trigger the workflow on push or pull request
+#Trigger the workflow on push or pull request
 
 on:
     - push
@@ -13,12 +13,12 @@ env:
 jobs:
    build:
 
-   # The type of machine to run the job on
+   #The type of machine to run the job on
    runs-on: ubuntu-latest
 
-    strategy:
-      # Node versions list
-    matrix:
+   strategy:
+      #Node versions list
+     matrix:
         node-version: [17.x]
 
     steps:
@@ -40,8 +40,8 @@ jobs:
        make lint
      - name: Test & publish code coverage
       # Publish code coverage on Code Climate
-      # https: // github.com/paambati/codeclimate-action
-      uses: paambaati/codeclimate-action@v3.2.0
+      # https: // github.com/paambaati/codeclimate-action
+      uses: paambaati/codeclimate-action@v3.1.1
       # Add Code Climate secret key
       env:
          CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
