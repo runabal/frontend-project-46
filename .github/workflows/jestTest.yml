@@ -1,4 +1,4 @@
-  # Name of workflow
+# Name of workflow
 name: 'test project'
 
 # Trigger the workflow on push or pull request
