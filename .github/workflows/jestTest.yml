@@ -17,7 +17,7 @@ jobs:
    runs-on: ubuntu-latest
 
     strategy:
-      # Node version list
+      # Node versions list
     matrix:
         node-version: [17.x]
 
@@ -26,13 +26,13 @@ jobs:
        # https://github.com/actions/checkout
      - uses: actions/checkout@v3
        # Step's name
-     - name: Use Node ${{ matrix.node }}
+     - name: Use Node.js ${{ matrix.node-version }}
      # Configures the node version used on GitHub-hosted runners
      # https://github.com/actions/setup-node
      uses: actions/setup-node@v3
      # The Node.js version to configure
       with:
-         node-version: ${{ matrix.node }}
+         node-version: ${{ matrix.node-version }}
          cache: 'npm'
      # Run install project
      - name: npm install
@@ -40,7 +40,7 @@ jobs:
        make install
      env:
        CI: true
-     - name: Run linter
+     - name: run linter
      run: |
        make lint
      - name: Test & publish code coverage
