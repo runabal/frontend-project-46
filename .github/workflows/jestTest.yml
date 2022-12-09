@@ -1,4 +1,4 @@
-# Name of workflow
+  # Name of workflow
 name: 'test project'
 
 # Trigger the workflow on push or pull request
@@ -6,6 +6,7 @@ name: 'test project'
 on:
     - push
     - pull_request
+
 env:
     CI: true
 
@@ -18,16 +19,18 @@ jobs:
     strategy:
       # Node version list
     matrix:
-        node-version: [13.x]
+        node-version: [16.x]
 
     steps:
        #Check-out repository under GitHub workspace
        # https://github.com/actions/checkout
      - uses: actions/checkout@v3
        # Step's name
-     - name: Use Node ${{ matrix.node-verson }}
-
-     - uses: action/setup-node@v3
+     - name: Use Node.js ${{ matrix.node-verson }}
+     # Configures the node version used on GitHub-hosted runners
+     # https://github.com/actions/setup-node
+     uses: action/setup-node@v3
+     # The Node.js version to configure
       with:
          node-version: ${{ matrix.node-version }}
          cache: 'npm'
@@ -37,10 +40,10 @@ jobs:
        # - name: Test & publish code coverage
    #   # Publish code coverage on Code Climate
    #   # https: // github.com/paambati/codeclimate-action
-   uses: paambaati/codeclimate-action@v3.0.0
-   # Add Code Climate secret key
-   env:
-     CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
-  with:
-     coverageCommand: make test-coverage
-     debug: true
+   #   uses: paambaati/codeclimate-action@v3.0.0
+   #   # Add Code Climate secret key
+   #   env:
+   #      CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
+   #    with:
+   #    coverageCommand: make test-coverage
+   #    debug: true
