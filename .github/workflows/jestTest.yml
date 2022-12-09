@@ -1,5 +1,5 @@
-
-name: 'test project'
+# Name of workflow
+name: 'project test'
 
 # Trigger the workflow on push or pull request
 
@@ -11,7 +11,7 @@ env:
     CI: true
 
 jobs:
-    build:
+   build:
 
    # The type of machine to run the job on
    runs-on: ubuntu-latest
@@ -26,24 +26,30 @@ jobs:
        # https://github.com/actions/checkout
      - uses: actions/checkout@v3
        # Step's name
-     - name: Use Node.js ${{ matrix.node-verson }}
+     - name: Use Node ${{ matrix.node }}
      # Configures the node version used on GitHub-hosted runners
      # https://github.com/actions/setup-node
      uses: action/setup-node@v3
      # The Node.js version to configure
       with:
-         node-version: ${{ matrix.node-version }}
+         node-version: ${{ matrix.node }}
          cache: 'npm'
-      - run: make install
-      - run: make lint
-      - run: make test
-       # - name: Test & publish code coverage
-   #   # Publish code coverage on Code Climate
-   #   # https: // github.com/paambati/codeclimate-action
-   #   uses: paambaati/codeclimate-action@v3.0.0
-   #   # Add Code Climate secret key
-   #   env:
-   #      CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
-   #    with:
-   #    coverageCommand: make test-coverage
-   #    debug: true
+     # Run install project
+     - name: npm install
+     run: |        
+       make install
+     env:
+       CI: true
+     - name: Run linter
+     run: |
+       make lint
+     - name: Test & publish code coverage
+      # Publish code coverage on Code Climate
+      # https: // github.com/paambati/codeclimate-action
+      uses: paambaati/codeclimate-action@v3.2.0
+      # Add Code Climate secret key
+      env:
+         CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
+       with:
+       coverageCommand: make test-coverage
+       debug: true
