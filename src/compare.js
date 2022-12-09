@@ -4,7 +4,7 @@ const build = (obj1, obj2) => {
   const keys = _.union(_.keys(obj1), _.keys(obj2));
   const keysSort = _.sortBy(keys);
   const result = [];
-   keysSort.forEach((key) => {
+  keysSort.forEach((key) => {
     const val1 = obj1[key];
     const val2 = obj2[key];
     if (Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key) && val1 === val2) {
