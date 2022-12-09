@@ -1,12 +1,6 @@
-install: install-deps
-	npx simple-git-hooks
-
-install-deps:
+install:
 	npm ci
-bin:
-	node bin/gendiff.js
-publish:
-	npm publish
+
 lint:
 	npx eslint .
 test:
@@ -15,4 +9,4 @@ test:
 test-coverage:
 	npm test -- --coverage --coverageProvider=v8
 
-.PHONY: test
+
