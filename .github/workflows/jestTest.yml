@@ -3,14 +3,14 @@ name: 'project test'
 
 #Trigger the workflow on push or pull request
 on:
-    - push
-    - pull_request
+  - push
+  - pull_request
 
 env:
-    CI: true
+  CI: true
 
 jobs:
-   build:
+  build:
 
    #The type of machine to run the job on
    runs-on: ubuntu-latest
