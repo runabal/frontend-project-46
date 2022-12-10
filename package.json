@@ -1,7 +1,7 @@
 {
   "name": "frontend-project-46",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/runabal/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/runabal/frontend-project-46/actions)",
+  "description": "Hexlet project 2",
   "main": "src/index.js",
   "bin": {
     "gendiff": "bin/gendiff.js"
