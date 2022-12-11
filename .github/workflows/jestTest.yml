@@ -32,7 +32,8 @@ jobs:
           env:
              CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
           with:
-             coverageCommand: npx jest --coverage
-             debug: true      
+             coverageCommand: make test-coverage
+             debug: true
+                   
          
     
