@@ -31,7 +31,7 @@ jobs:
       # Run install project
     - name: npm install
       run: |        
-        make install
+        npm i
       env:
         CI: true
     - name: Run linter
@@ -45,5 +45,5 @@ jobs:
       env:
          CC_TEST_REPORTER_ID: ${{ secrets.TEST_COVERAGE }}
       with:
-         coverageCommand: make test-coverage
+         coverageCommand: npm test --coverage
          debug: true
