@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1670607598120" clover="3.2.0">
-  <project timestamp="1670607598121" name="All files">
+<coverage generated="1670789022652" clover="3.2.0">
+  <project timestamp="1670789022652" name="All files">
     <metrics statements="38" coveredstatements="38" conditionals="32" coveredconditionals="32" methods="6" coveredmethods="6" elements="76" coveredelements="76" complexity="0" loc="38" ncloc="38" packages="1" files="4" classes="4"/>
     <file name="compare.js" path="/home/runabal/frontend-project-46/src/compare.js">
       <metrics statements="16" coveredstatements="16" conditionals="18" coveredconditionals="18" methods="2" coveredmethods="2"/>
