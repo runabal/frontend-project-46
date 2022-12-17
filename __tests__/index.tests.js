@@ -10,7 +10,10 @@ const file = fs.readFileSync(
 const resultFile = file.trim();
 
 test('diff', () => {
-  const file1 = '__fixtures__/file1.json';
-  const file2 = '__fixtures__/file2.json';
-  expect(genDiff(file1, file2)).toEqual(resultFile);
+  const file1Json = '__fixtures__/file1.json';
+  const file2Json = '__fixtures__/file2.json';
+  const file1Yml = '__fixtures__/file1.yml';
+  const file2Yml = '__fixtures__/file2.yml';
+  expect(genDiff(file1Json, file2Json)).toEqual(resultFile);
+  expect(genDiff(file1Yml, file2Yml)).toEqual(resultFile);
 });
