@@ -1,6 +1,6 @@
 import fs from 'fs';
 import ini from 'ini';
-import yaml from 'js-yaml'
+import yaml from 'js-yaml';
 
 const configPath = 'path/to/eslint';
 const format = path.extname(configPath);
@@ -13,4 +13,4 @@ if (format === ' ') {
 } else if (format === '.ini') {
   parse = ini.parse;
 }
-parse(data); 
+parse(data);

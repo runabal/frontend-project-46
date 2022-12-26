@@ -1,37 +1,46 @@
 import _ from 'lodash';
 
 const build = (obj1, obj2) => {
-  const keys = _.union(_.keys(obj1), _.keys(obj2));
-  const keysSort = _.sortBy(keys);
-  const result = [];
-  keysSort.forEach((key) => {
-    const val1 = obj1[key];
-    const val2 = obj2[key];
-    if (Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key) && val1 === val2) {
-      result.push({ key, value: obj1[key], type: 'unchanged' });
+  const keys1 = _.keys(obj1);
+  const keys2 = _.keys(obj2);
+  const keysSort = _.sortBy(_.union(keys1, keys2));
+
+  const result = keysSort.map((key) => {
+    if (!_.has(obj1, key)) {
+      return {
+        key,
+        value: obj2[key],
+        type: 'added',
+      };
     }
-    if (Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key) && val1 !== val2) {
-      result.push(
-        {
-          key,
-          value: obj1[key],
-          type: 'changed',
-          valueBefore: 'before',
-        },
-        {
-          key,
-          value: obj2[key],
-          type: 'changed',
-          valueAfter: 'after',
-        },
-      );
+    if (!_.has(obj2, key)) {
+      return {
+        key,
+        value: obj1[key],
+        type: 'deleted',
+
+      };
     }
-    if (!Object.hasOwn(obj1, key) && Object.hasOwn(obj2, key)) {
-      result.push({ key, value: obj2[key], type: 'added' });
+    if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
+      return {
+        key,
+        type: 'nested',
+        children: build(obj1[key], obj2[key]),
+      };
     }
-    if (Object.hasOwn(obj1, key) && !Object.hasOwn(obj2, key)) {
-      result.push({ key, value: obj1[key], type: 'deleted' });
+    if (obj1[key] !== obj2[key]) {
+      return {
+        key,
+        valueBefore: obj1[key],
+        valueAfter: obj2[key],
+        type: 'changed',
+      };
     }
+    return {
+      key,
+      value: obj1[key],
+      type: 'unchanged',
+    };
   });
   return result;
 };
