@@ -26,3 +26,11 @@ gendiff file1.json file2.json
 
 ## Compare files with nested structure json/yml format
 [![asciicast](https://asciinema.org/a/oB8fHok55zX4AQFAjoxJEN8Ae.svg)](https://asciinema.org/a/oB8fHok55zX4AQFAjoxJEN8Ae)
+
+## Compare files with format plain
+gendiff --format plain file1.json/file2.json || file1.yml/file2.yml 
+[![asciicast](https://asciinema.org/a/tDnaj8k4i1eWbJvyNjFFo5UGA.svg)](https://asciinema.org/a/tDnaj8k4i1eWbJvyNjFFo5UGA)
+
+## Compare feles with format json
+gendiff --format json file1.json/file2.json || file1.yaml/file2.yaml 
+[![asciicast](https://asciinema.org/a/sEuocOQrygOs3QfHiTGqBYi1R.svg)](https://asciinema.org/a/sEuocOQrygOs3QfHiTGqBYi1R)
