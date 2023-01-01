@@ -12,8 +12,14 @@ const filePlain = fs.readFileSync(
   'utf-8',
 );
 
+const fileJson = fs.readFileSync(
+  path.resolve(process.cwd(), '__fixtures__/resultJson.txt'),
+  'utf-8',
+);
+
 const resultStylish = fileStylish.trim();
 const resultPlain = filePlain.trim();
+const resultJson = fileJson.trim();
 
 test('diff', () => {
   const file1Json = '__fixtures__/file1.json';
@@ -24,4 +30,6 @@ test('diff', () => {
   expect(genDiff(file1Yml, file2Yml, 'stylish')).toEqual(resultStylish);
   expect(genDiff(file1Json, file2Json, 'plain')).toEqual(resultPlain);
   expect(genDiff(file1Yml, file2Yml, 'plain')).toEqual(resultPlain);
+  expect(genDiff(file1Yml, file2Yml, 'json')).toEqual(resultJson);
+  expect(genDiff(file1Json, file2Json, 'json')).toEqual(resultJson);
 });
