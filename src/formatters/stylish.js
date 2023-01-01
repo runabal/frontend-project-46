@@ -34,8 +34,8 @@ const getMappingFile = (file, deep = 1) => {
     case 'nested':
       return `${makeIndent(deep)} ${file.key}: {\n${file.children.map((a) => getMappingFile(a, deep + 1)).join('\n')}\n ${makeIndent(deep)} }`;
     default:
-      throw new Error('Unknown type');
+      throw new Error('Unknown type!');
   }
 };
 
-export default (diff) => `{\n${diff.map((file) => getMappingFile(file, 1)).join('\n')}\n}`;
+export default (stylish) => `{\n${stylish.map((file) => getMappingFile(file, 1)).join('\n')}\n}`;
