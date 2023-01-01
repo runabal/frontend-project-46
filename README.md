@@ -23,4 +23,6 @@ gendiff file1.json file2.json
 
 ## Compare files JSON format
 [![asciicast](https://asciinema.org/a/oaUmUsrQ2aZp1rpJfsZYYfrDC.svg)](https://asciinema.org/a/oaUmUsrQ2aZp1rpJfsZYYfrDC)
->>>>>>> d80402e020c93d68f9ae8c2407de74866e18517b
+
+## Compare files with nested structure json/yml format
+[![asciicast](https://asciinema.org/a/oB8fHok55zX4AQFAjoxJEN8Ae.svg)](https://asciinema.org/a/oB8fHok55zX4AQFAjoxJEN8Ae)
