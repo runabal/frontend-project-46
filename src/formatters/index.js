@@ -7,7 +7,7 @@ const formatDiff = (data, format) => {
     case 'stylish':
       return stylish(data);
     case 'plain':
-      return plain(data);
+      return plain(data, 0);
     case 'json':
       return json(data);
     default:
