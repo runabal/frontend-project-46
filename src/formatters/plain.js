@@ -25,4 +25,4 @@ const getPlain = (file, parent = '') => {
   }
 };
 
-export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`.trim()
+export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`.trim();
