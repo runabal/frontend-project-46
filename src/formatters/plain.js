@@ -19,10 +19,10 @@ const getPlain = (file, parent = '') => {
       return `Property '${parent}${file.key}' was updated. From ${stringify(file.valueBefore)} to ${stringify(file.valueAfter)}`;
     case 'nested':
       return file.children.map((value) => getPlain(value, `${parent + file.key}.`))
-        .filter((item) => item !== null).join('\n').trim();
+        .filter((item) => item !== null).join('\n');
     default:
       throw new Error('Unknown type!');
   }
 };
 
-export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`
+export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`.trim()
