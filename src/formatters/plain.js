@@ -23,5 +23,7 @@ const getPlain = (file, parent = '') => {
     default:
       throw new Error('Unknown type!');
   }
+
 };
+
 export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`;
