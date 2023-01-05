@@ -18,7 +18,7 @@ const fileJson = fs.readFileSync(
 );
 
 const resultStylish = fileStylish.trim();
-const resultPlain = filePlain.trim();
+const resultPlain = filePlain.trim().trim();
 const resultJson = fileJson.trim();
 
 test('diff', () => {

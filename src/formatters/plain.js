@@ -19,7 +19,7 @@ const getPlain = (file, parent = '') => {
       return `Property '${parent}${file.key}' was updated. From ${stringify(file.valueBefore)} to ${stringify(file.valueAfter)}`;
     case 'nested':
       return file.children.map((value) => getPlain(value, `${parent + file.key}.`))
-        .filter((item) => item !== null).join('\n');
+        .filter((item) => item !== null).join('\n').trim();
     default:
       throw new Error('Unknown type!');
   }
