@@ -4,8 +4,8 @@
     "setting2": 200,
     "setting3": true,
     "setting6":  {
-      "key":  "value",
-      "doge":  {
+      "key": "value",
+      "doge": {
         "wow": ""
       }
    }
@@ -13,8 +13,8 @@
   "group1": {
     "baz": "bas",
     "foo": "bar",
-    "nest":  {
-      "key":  "value"
+    "nest": {
+      "key": "value"
     }
   },
   "group2": {
