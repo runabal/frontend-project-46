@@ -18,9 +18,9 @@ const stringify = (file, deep = 1) => {
   }
   const keys = Object.keys(file);
   const getKeys = keys.map(
-    (key) => `${makeIndent(deep + 1)} ${key}: ${stringify(file[key], deep + 1)}`,
+    (key) => ` ${makeIndent(deep + 1)} ${key}: ${stringify(file[key], deep + 1)}`,
   );
-  return `{\n ${getKeys.join('\n')}\n ${makeIndent(deep)} }`;
+  return `{\n${getKeys.join('\n')}\n ${makeIndent(deep)} }`;
 };
 
 const getMappingFile = (file, deep = 1) => {
