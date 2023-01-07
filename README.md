@@ -31,6 +31,6 @@ gendiff file1.json file2.json
 gendiff --format plain file1.json/file2.json || file1.yml/file2.yml 
 [![asciicast](https://asciinema.org/a/tDnaj8k4i1eWbJvyNjFFo5UGA.svg)](https://asciinema.org/a/tDnaj8k4i1eWbJvyNjFFo5UGA)
 
-## Compare feles with format json
+## Compare files with format json
 gendiff --format json file1.json/file2.json || file1.yaml/file2.yaml 
 [![asciicast](https://asciinema.org/a/sEuocOQrygOs3QfHiTGqBYi1R.svg)](https://asciinema.org/a/sEuocOQrygOs3QfHiTGqBYi1R)
