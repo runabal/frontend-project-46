@@ -3,22 +3,26 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c2efffc8ec7b997c8dd4/test_coverage)](https://codeclimate.com/github/runabal/frontend-project-46/test_coverage)
 [![Actions Status](https://github.com/runabal/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/runabal/frontend-project-46/actions)
 
-### Requirements
+## Discription project
+Difference Calculator - it is CLI program that shows the differences between two files. 
+Supported file formats: JSON, YAML, YAML.
+
+## Requirements
 
 Node.js (version 13.2.0 and above)
 
 ## Install:
 
-### install dependencies
+# install dependencies
 make install
 
-### install the package
+# install the package
 make link
 
-## help
+# help
 gendiff -h
 
-## compare files:
+# compare files:
 gendiff file1.json file2.json
 
 ## Compare files JSON format
