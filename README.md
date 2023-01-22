@@ -13,16 +13,16 @@ Node.js (version 13.2.0 and above)
 
 ## Install:
 
-# install dependencies
+### install dependencies
 make install
 
-# install the package
+### install the package
 make link
 
-# help
+### help
 gendiff -h
 
-# compare files:
+### compare files:
 gendiff file1.json file2.json
 
 ## Compare files JSON format
