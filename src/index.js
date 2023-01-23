@@ -5,21 +5,19 @@ import build from './compare.js';
 import parse from './parsers.js';
 import formatDiff from './formatters/index.js';
 
-const readFile = (file) => {
-  const fullPath = path.resolve(process.cwd(), file);
+const readFile = (filepath) => {
+  const fullPath = path.resolve(process.cwd(), filepath);
   const data = fs.readFileSync(fullPath).toString();
   return data;
 };
 
-const getExtension = (file) => path.extname(file).slice(1);
+const getFormat = (filepath) => path.extname(filepath).slice(1);
 
-const genDiff = (file1, file2, formatName = 'stylish') => {
-  const data1 = readFile(file1);
-  const data2 = readFile(file2);
-  const obj1 = parse(data1, getExtension(file1));
-  const obj2 = parse(data2, getExtension(file2));
-  const obj = build(obj1, obj2);
-  return formatDiff(obj, formatName);
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
+  const data1 = parse(readFile(filepath1), getFormat(filepath1));
+  const data2 = parse(readFile(filepath2), getFormat(filepath2));
+  const compareDate = build(data1, data2);
+  return formatDiff(compareDate, formatName);
 };
 
 export default genDiff;

@@ -1,35 +1,40 @@
 import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
 
-const fileStylish = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultStylish.txt'),
-  'utf-8',
-);
-const filePlain = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultPlain.txt'),
-  'utf-8',
-);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const fileJson = fs.readFileSync(
-  path.resolve(process.cwd(), '__fixtures__/resultJson.txt'),
-  'utf-8',
-);
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', `/${filename}`);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8').trim();
 
-const resultStylish = fileStylish.trim();
-const resultPlain = filePlain.trim().trim();
-const resultJson = fileJson.trim();
+const cases = [
+  ['json', 'stylish', 'resultStylish.txt'],
+  ['json', 'plain', 'resultPlain.txt'],
+  ['json', 'json', 'resultJson.txt'],
+  ['yml', 'stylish', 'resultStylish.txt'],
+  ['yml', 'plain', 'resultPlain.txt'],
+  ['yml', 'json', 'resultJson.txt'],
+];
 
-test('diff', () => {
-  const file1Json = '__fixtures__/file1.json';
-  const file2Json = '__fixtures__/file2.json';
-  const file1Yml = '__fixtures__/file1.yml';
-  const file2Yml = '__fixtures__/file2.yml';
-  expect(genDiff(file1Json, file2Json, 'stylish')).toEqual(resultStylish);
-  expect(genDiff(file1Yml, file2Yml, 'stylish')).toEqual(resultStylish);
-  expect(genDiff(file1Json, file2Json, 'plain')).toEqual(resultPlain);
-  expect(genDiff(file1Yml, file2Yml, 'plain')).toEqual(resultPlain);
-  expect(genDiff(file1Yml, file2Yml, 'json')).toEqual(resultJson);
-  expect(genDiff(file1Json, file2Json, 'json')).toEqual(resultJson);
+describe('test genDiff, each cases', () => {
+  test.each(cases)('files of type, formatted', (type, format, expectedResult) => {
+    const file1 = getFixturePath(`file1.${type}`);
+    const file2 = getFixturePath(`file2.${type}`);
+    const result = readFile(expectedResult);
+    const readDiff = genDiff(file1, file2, format);
+    expect(readDiff).toEqual(result);
+  });
+});
+
+describe('test default value', () => {
+  test.each(cases)('files of type with default value', (type) => {
+    const file1 = getFixturePath(`file1.${type}`);
+    const file2 = getFixturePath(`file2.${type}`);
+    const result = readFile('resultStylish.txt');
+    const readDiff = genDiff(file1, file2);
+    expect(readDiff).toEqual(result);
+  });
 });
