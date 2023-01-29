@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const build = (obj1, obj2) => {
+const buildTree = (obj1, obj2) => {
   const keys1 = _.keys(obj1);
   const keys2 = _.keys(obj2);
   const keysSort = _.sortBy(_.union(keys1, keys2));
@@ -25,7 +25,7 @@ const build = (obj1, obj2) => {
       return {
         key,
         type: 'nested',
-        children: build(obj1[key], obj2[key]),
+        children: buildTree(obj1[key], obj2[key]),
       };
     }
     if (obj1[key] !== obj2[key]) {
@@ -45,4 +45,4 @@ const build = (obj1, obj2) => {
   return result;
 };
 
-export default build;
+export default buildTree;
