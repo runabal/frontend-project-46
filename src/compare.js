@@ -22,7 +22,7 @@ const buildTree = (data1, data2) => {
       };
     }
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
-     return {
+      return {
         key,
         type: 'nested',
         children: buildTree(data1[key], data2[key]),
