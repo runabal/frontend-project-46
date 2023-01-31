@@ -16,7 +16,7 @@ const getPlain = (file, parent = '') => {
     case 'unchanged':
       return null;
     case 'changed':
-      return `Property '${parent}${file.key}' was updated. From ${stringify(file.valueBefore)} to ${stringify(file.valueAfter)}`;
+      return `Property '${parent}${file.key}' was updated. From ${stringify(file.value1)} to ${stringify(file.value2)}`;
     case 'nested':
       return file.children.map((value) => getPlain(value, `${parent + file.key}.`))
         .filter((item) => item !== null).join('\n');
