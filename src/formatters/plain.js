@@ -1,28 +1,28 @@
 import _ from 'lodash';
 
-const stringify = (file) => {
-  if (_.isObject(file)) {
+const stringify = (nodeValue) => {
+  if (_.isObject(nodeValue)) {
     return '[complex value]';
   }
-  return typeof file === 'string' ? `'${file}'` : file;
+  return typeof nodeValue === 'string' ? `'${nodeValue}'` : nodeValue;
 };
 
-const getPlain = (file, parent = '') => {
-  switch (file.type) {
+const getFormatPlain = (node, parent = '') => {
+  switch (node.type) {
     case 'added':
-      return `Property '${parent}${file.key}' was added with value: ${stringify(file.value)}`;
+      return `Property '${parent}${node.key}' was added with value: ${stringify(node.value)}`;
     case 'deleted':
-      return `Property '${parent}${file.key}' was removed`;
+      return `Property '${parent}${node.key}' was removed`;
     case 'unchanged':
       return null;
     case 'changed':
-      return `Property '${parent}${file.key}' was updated. From ${stringify(file.value1)} to ${stringify(file.value2)}`;
+      return `Property '${parent}${node.key}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
     case 'nested':
-      return file.children.map((value) => getPlain(value, `${parent + file.key}.`))
+      return node.children.map((value) => getFormatPlain(value, `${parent + node.key}.`))
         .filter((item) => item !== null).join('\n');
     default:
-      throw new Error('Unknown type!');
+      throw new Error(`Unknown type of data ${node.tpe}`);
   }
 };
 
-export default (plain) => `${plain.map((element) => getPlain(element)).join('\n')}`.trim();
+export default (formatPlain) => `${formatPlain.map((tree) => getFormatPlain(tree)).join('\n')}`.trim();
