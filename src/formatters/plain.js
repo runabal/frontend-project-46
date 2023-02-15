@@ -10,26 +10,31 @@ const stringify = (data) => {
   return String(data);
 };
 
-const iter = (children, parent) => {
-  const lines = children.map((node) => {
+const getPropertyName = (propertyName, nodeKey) => {
+  return `${propertyName}${nodeKey}.`
+  };
+
+const iter = (children, propertyName) => {
+  return children
+   .map((node) => {
     switch (node.type) {
       case 'added':
-        return `Property '${parent}${node.key}' was added with value: ${stringify(node.value)}`;
+        return `Property '${propertyName}${node.key}' was added with value: ${stringify(node.value)}`;
       case 'deleted':
-        return `Property '${parent}${node.key}' was removed`;
+        return `Property '${propertyName}${node.key}' was removed`;
       case 'unchanged':
         return null;
       case 'changed':
-        return `Property '${parent}${node.key}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
+        return `Property '${propertyName}${node.key}' was updated. From ${stringify(node.value1)} to ${stringify(node.value2)}`;
       case 'nested':
-        return iter(node.children, `${parent}${node.key}.`);
+        return iter(node.children, getPropertyName(propertyName, node.key));
       default:
-        throw new Error(`Unknown type of data ${node.tpe}`);
-    }
-  });
-  return lines.filter((item) => item !== null).join('\n');
-};
-
+        throw new Error(`Unknown type of data ${node.type}`);
+     }
+     })
+   .filter(Boolean)
+   .join('\n');
+ };
 const formatPlain = (tree) => iter(tree, '');
 
 export default formatPlain;
