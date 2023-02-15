@@ -10,13 +10,10 @@ const stringify = (data) => {
   return String(data);
 };
 
-const getPropertyName = (propertyName, nodeKey) => {
-  return `${propertyName}${nodeKey}.`
-  };
+const getPropertyName = (propertyName, nodeKey) => `${propertyName}${nodeKey}.`;
 
-const iter = (children, propertyName) => {
-  return children
-   .map((node) => {
+const iter = (children, propertyName) => children
+  .map((node) => {
     switch (node.type) {
       case 'added':
         return `Property '${propertyName}${node.key}' was added with value: ${stringify(node.value)}`;
@@ -30,11 +27,10 @@ const iter = (children, propertyName) => {
         return iter(node.children, getPropertyName(propertyName, node.key));
       default:
         throw new Error(`Unknown type of data ${node.type}`);
-     }
-     })
-   .filter(Boolean)
-   .join('\n');
- };
+    }
+  })
+  .filter(Boolean)
+  .join('\n');
 const formatPlain = (tree) => iter(tree, '');
 
 export default formatPlain;

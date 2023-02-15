@@ -6,11 +6,9 @@ const stringify = (data, depth) => {
   if (!_.isObject(data)) {
     return String(data);
   }
-  const keys = Object.entries(data).map(([key, value]) =>
-    `${makeIndent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`,
-  );
+  const keys = Object.entries(data).map(([key, value]) => `${makeIndent(depth + 1)}  ${key}: ${stringify(value, depth + 1)}`);
   return `{\n${keys.join('\n')}\n  ${makeIndent(depth)}}`;
-  };
+};
 
 const iter = (children, depth) => children.map((node) => {
   switch (node.type) {
